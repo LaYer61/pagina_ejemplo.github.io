@@ -1,3 +1,11 @@
-h1 {
-    color: blue;
+h1{
+    color: rgb(67, 144, 207);    
+}
+html {
+    background-color: rgb(232, 255, 170);
+}
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: rgb(210, 70, 245);
 }
