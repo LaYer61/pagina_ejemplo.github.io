@@ -13,4 +13,7 @@ Pagina de ejemplo con ejercicios de git
 ## V 1.0
 - Se crea la estructura principal del proyecto
 ## V 2.0
-- Se agrega un estilo simple a la 
+- Se agrega un estilo simple a la pagina index.html
+## 3.0
+- Se hace la subida de la pagina index en github pages
+- https://layer61.github.io/pagina_ejemplo.github.io/
