@@ -9,11 +9,18 @@ Pagina de ejemplo con ejercicios de git
 4. Revisamos que tengamos los mismos archivos que el repositorio, si queremos ingresar al repositorio, aqui esta el link: https://github.com/LaYer61/pagina_ejemplo.github.io.git
 5. Si queremos ingresar a github page del repositorio, el link es: https://layer61.github.io/pagina_ejemplo.github.io/
 
+# Ramas
+## 1. Main
+Esta es la rama principal la cual sera la que se cargue la pagina en github pages
+## 2. Styles
+Esta es la rama que se usara para pruebas de stylo y color generan en todo el proyecto
 # Documentación:
 ## V 1.0
 - Se crea la estructura principal del proyecto
 ## V 2.0
 - Se agrega un estilo simple a la pagina index.html
+### V 2.1
+- Se hace la creacion e integracion de la rama `styles` para hacer pruebas de color en el proyecto sin afectar la rama principal `main`
 ## 3.0
 - Se hace la subida de la pagina index en github pages
 - https://layer61.github.io/pagina_ejemplo.github.io/
