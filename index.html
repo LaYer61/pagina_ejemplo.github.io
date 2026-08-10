@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My English Journey — Blog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,600&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple-900:#241536;
+    --purple-800:#33204d;
+    --purple-700:#4a2e70;
+    --purple-500:#7c4fb0;
+    --purple-300:#b98fe0;
+    --lavender-100:#f3edfb;
+    --lavender-050:#faf7ff;
+    --card-bg:#ffffff;
+    --ink:#241736;
+    --ink-soft:#5b4a72;
+    --accent-gold:#e7b869;
+    --line:#e4d8f5;
+    --radius:18px;
+    --shadow: 0 18px 40px -20px rgba(36,21,54,0.35);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 12% 0%, rgba(124,79,176,0.12), transparent 55%),
+      var(--lavender-100);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.55;
+  }
+
+  a{color:inherit;}
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--purple-300);
+  }
+
+  /* ===== HEADER ===== */
+  header.hero{
+    background:linear-gradient(160deg, var(--purple-900) 0%, var(--purple-800) 55%, var(--purple-700) 100%);
+    color:#fff;
+    padding:64px 24px 76px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute;
+    right:-120px; top:-120px;
+    width:360px; height:360px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(231,184,105,0.25), transparent 70%);
+  }
+  .hero-inner{
+    max-width:880px;
+    margin:0 auto;
+    position:relative;
+    z-index:1;
+  }
+  .hero-inner .eyebrow{color:var(--accent-gold);}
+  h1.title{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:clamp(2.4rem, 5vw, 3.6rem);
+    margin:14px 0 10px;
+    letter-spacing:-0.01em;
+  }
+  h1.title em{
+    font-style:italic;
+    font-weight:600;
+    color:var(--purple-300);
+  }
+  .hero-sub{
+    font-size:1.05rem;
+    color:#e6d9fb;
+    max-width:560px;
+    margin:0 0 28px;
+  }
+  .hero-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .hero-tags span{
+    border:1px solid rgba(255,255,255,0.25);
+    padding:6px 14px;
+    border-radius:999px;
+    font-size:0.82rem;
+    color:#f1e9fc;
+    background:rgba(255,255,255,0.06);
+  }
+
+  /* ===== MAIN LAYOUT ===== */
+  main{
+    max-width:880px;
+    margin:-40px auto 0;
+    padding:0 24px 100px;
+    position:relative;
+  }
+
+  .intro-note{
+    background:var(--card-bg);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:22px 26px;
+    margin-bottom:48px;
+    border:1px solid var(--line);
+    font-size:0.96rem;
+    color:var(--ink-soft);
+  }
+  .intro-note strong{color:var(--purple-700);}
+
+  /* ===== TIMELINE / SIGNATURE ELEMENT ===== */
+  .journey{
+    position:relative;
+    padding-left:64px;
+  }
+  .journey::before{
+    content:"";
+    position:absolute;
+    left:23px;
+    top:14px;
+    bottom:14px;
+    width:2px;
+    background:repeating-linear-gradient(
+      to bottom,
+      var(--purple-300) 0 6px,
+      transparent 6px 12px
+    );
+  }
+
+  .post{
+    position:relative;
+    background:var(--card-bg);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    border:1px solid var(--line);
+    margin-bottom:34px;
+    overflow:hidden;
+    transition:box-shadow .25s ease;
+  }
+  .post:hover{box-shadow:0 22px 46px -18px rgba(36,21,54,0.42);}
+
+  .post-marker{
+    position:absolute;
+    left:-64px;
+    top:28px;
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    background:var(--purple-700);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.15rem;
+    box-shadow:0 8px 18px -6px rgba(74,46,112,0.6);
+    border:3px solid var(--lavender-050);
+  }
+
+  .post-grid{
+    display:grid;
+    grid-template-columns:220px 1fr;
+  }
+
+  .post-media{
+    position:relative;
+    background:var(--purple-700);
+    min-height:180px;
+    overflow:hidden;
+  }
+  .post-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .post-media .img-placeholder{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:16px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.05em;
+    color:#e9defb;
+    background:
+      linear-gradient(160deg, var(--purple-700), var(--purple-500));
+  }
+
+  .post-body{
+    padding:24px 26px 22px;
+    display:flex;
+    flex-direction:column;
+  }
+  .post-topic{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--purple-500);
+    margin-bottom:6px;
+  }
+  .post-title{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.35rem;
+    margin:0 0 8px;
+    color:var(--purple-900);
+  }
+  .post-date{
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    margin-bottom:12px;
+  }
+
+  .post-summary{
+    font-size:0.94rem;
+    color:var(--ink-soft);
+  }
+  .summary-short{display:block;}
+  .summary-full{display:none;}
+  .post.expanded .summary-short{display:none;}
+  .post.expanded .summary-full{display:block;}
+
+  .post-actions{
+    margin-top:16px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    align-items:center;
+  }
+
+  .btn{
+    font-family:'Work Sans', sans-serif;
+    font-size:0.82rem;
+    font-weight:600;
+    border-radius:999px;
+    padding:9px 18px;
+    border:none;
+    cursor:pointer;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    transition:transform .15s ease, background .2s ease;
+  }
+  .btn:active{transform:scale(0.97);}
+
+  .btn-expand{
+    background:var(--lavender-100);
+    color:var(--purple-700);
+    border:1px solid var(--purple-300);
+  }
+  .btn-expand:hover{background:var(--purple-300); color:#fff;}
+
+  .btn-drive{
+    background:var(--purple-700);
+    color:#fff;
+  }
+  .btn-drive:hover{background:var(--purple-900);}
+  .btn-drive svg{width:14px;height:14px;}
+
+  /* ===== FOOTER ===== */
+  footer{
+    text-align:center;
+    padding:30px 24px 50px;
+    color:var(--ink-soft);
+    font-size:0.85rem;
+  }
+  footer .eyebrow{display:block;margin-bottom:6px;color:var(--purple-500);}
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:640px){
+    .journey{padding-left:46px;}
+    .journey::before{left:15px;}
+    .post-marker{left:-46px; width:34px; height:34px; font-size:0.95rem; top:20px;}
+    .post-grid{grid-template-columns:1fr;}
+    .post-media{min-height:150px;}
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .post, .btn{transition:none;}
+  }
+
+  /* Keyboard focus visibility */
+  .btn:focus-visible, a:focus-visible{
+    outline:3px solid var(--accent-gold);
+    outline-offset:2px;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">English · Progress Blog</span>
+    <h1 class="title">My World, <em>My Voice</em></h1>
+    <p class="hero-sub">A record of what I have learned in my English class — five posts, five steps of my progress. Every entry links to the evidence I uploaded to Drive.</p>
+  </div>
+</header>
+
+<main>
+  <div class="intro-note">
+    <strong>How to use this page:</strong> Click <strong>Read more</strong> on any post to expand the full summary.
+  </div>
+
+  <div class="journey">
+
+    <!-- ================= POST 1 — FAMILY ================= -->
+    <article class="post" id="post-1">
+      <span class="post-marker">1</span>
+      <div class="post-grid">
+        <div class="post-media">
+          <!-- Replace this image with your own photo -->
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Linus_Torvalds.jpeg?utm_source=es.wikipedia.org&utm_campaign=index&utm_content=original" alt="Family illustration" loading="lazy">
+        </div>
+        <div class="post-body">
+          <span class="post-topic">Post 01 · English Chronicle</span>
+          <h2 class="post-title">The Chronicle - Linus Torvalds</h2>
+          <p class="post-date">2025</p>
+          <div class="post-summary">
+            <span class="summary-short">“one of computer scientist most influential of the world”</span>
+            <span class="summary-full">“one of computer scientist most influential of the world”
+              Linus Tovalds borned the december 28 of 1969 in Helsinki,
+Finland. He is son of journalists Anna and Nils Torvalds, grandson
+of the statistician Leo Törnqvist and of poet Ole Torvalds.
+His first contact with computers was he has 11 years when
+his grandfather bought a Commodore computer and taught him to use it. He studied in
+Helsinki University between 1988 and 1996, where its graduated with a master's degree
+in computer science...</span>
+          </div>
+          <div class="post-actions">
+            <button class="btn btn-expand" onclick="togglePost('post-1', this)">Read more ↓</button>
+            <a class="btn btn-drive" href="https://drive.google.com/file/d/12Lh7p4XFJi_kmj7eHcGzXZlyjbOAFOtn/view?usp=drive_link" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.71 3.5 1.15 15l3.43 5.99h6.56L4.6 8.5zM9.14 21l3.43-5.99H22.85L19.4 21zM14.29 3.5H7.71l6.55 12.5h6.6z"/></svg>
+              View evidence in Drive
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ================= POST 2 — HOBBIES ================= -->
+    <article class="post" id="post-2">
+      <span class="post-marker">2</span>
+      <div class="post-grid">
+        <div class="post-media">
+          <img src="https://www.kevburns.com/hs-fs/hubfs/employee02.jpg?width=266&height=400&name=employee02.jpg" alt="Hobbies illustration" loading="lazy">
+        </div>
+        <div class="post-body">
+          <span class="post-topic">Post 02 · Audio</span>
+          <h2 class="post-title">My attitudes, beliefs and obligations in my job and in the Sena</h2>
+          <p class="post-date">2026</p>
+          <div class="post-summary">
+            <span class="summary-short">My profesional career starts with mi studies on Informatics Systems Support, where I learned infrastructure and systems fundamentals. Currently, I work as on-site support analyst in a technology company. </span>
+            <span class="summary-full">My profesional career starts with mi studies on Informatics Systems Support, where I learned infrastructure and systems fundamentals. Currently, I work as on-site support analyst in a technology company. My main obligation is to resolve users technical problems quickly and efficiently, I believe that a good technician has to listen carefully to users before offering a possible solution. I think that I should maintain a patient and professional attitude, even in high-pressure situations.</span>
+          </div>
+          <div class="post-actions">
+            <button class="btn btn-expand" onclick="togglePost('post-2', this)">Read more ↓</button>
+            <a class="btn btn-drive" href="https://drive.google.com/file/d/1VKKMjGDcWxT9--2jznnITT_Y6JCV963H/view?usp=drive_link" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.71 3.5 1.15 15l3.43 5.99h6.56L4.6 8.5zM9.14 21l3.43-5.99H22.85L19.4 21zM14.29 3.5H7.71l6.55 12.5h6.6z"/></svg>
+              View evidence in Drive
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ================= POST 3 — WORK ================= -->
+    <article class="post" id="post-3">
+      <span class="post-marker">3</span>
+      <div class="post-grid">
+        <div class="post-media">
+          <img src="https://travelgrafia.co/wp-content/uploads/2025/04/Mongui-Boyaca.webp" alt="Work illustration" loading="lazy">
+        </div>
+        <div class="post-body">
+          <span class="post-topic">Post 03 · Video</span>
+          <h2 class="post-title">Video about Mongui</h2>
+          <p class="post-date">2026</p>
+          <div class="post-summary">
+            <span class="summary-short">A tourist place in my region</span>
+            <span class="summary-full">A tourist place in my region.</span>
+          </div>
+          <div class="post-actions">
+            <button class="btn btn-expand" onclick="togglePost('post-3', this)">Read more ↓</button>
+            <a class="btn btn-drive" href="https://youtu.be/Npi8VKVv3K8" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.71 3.5 1.15 15l3.43 5.99h6.56L4.6 8.5zM9.14 21l3.43-5.99H22.85L19.4 21zM14.29 3.5H7.71l6.55 12.5h6.6z"/></svg>
+              View evidence in youtube
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ================= POST 4 — TRIPS ================= -->
+    <article class="post" id="post-4">
+      <span class="post-marker">4</span>
+      <div class="post-grid">
+        <div class="post-media">
+          <img src="https://cdn.shopify.com/s/files/1/0262/3019/4238/files/NotetakingStyles_MindMap4_Bsq_480x480.jpg?v=1696971944" alt="Trips illustration" loading="lazy">
+        </div>
+        <div class="post-body">
+          <span class="post-topic">Post 04 · Mind Map</span>
+          <h2 class="post-title">A Mind Map About PLE</h2>
+          <p class="post-date">2026</p>
+          <div class="post-summary">
+            <span class="summary-short">This mind map describes my Personal Learning Environment (PLE)</span>
+            <span class="summary-full">This mind map describes my Personal Learning Environment (PLE) and how I manage learning and work at SENA as an ADSO (Software Development) apprentice.</span>
+          </div>
+          <div class="post-actions">
+            <button class="btn btn-expand" onclick="togglePost('post-4', this)">Read more ↓</button>
+            <a class="btn btn-drive" href="https://drive.google.com/file/d/1JKVbGOnDmIOUtGfvHIDu0YV0zyHi7Ed7/view?usp=drive_link" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.71 3.5 1.15 15l3.43 5.99h6.56L4.6 8.5zM9.14 21l3.43-5.99H22.85L19.4 21zM14.29 3.5H7.71l6.55 12.5h6.6z"/></svg>
+              View evidence in Drive
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ================= POST 5 — CRITICAL THINKING ================= -->
+    <article class="post" id="post-5">
+      <span class="post-marker">5</span>
+      <div class="post-grid">
+        <div class="post-media">
+          <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=600&q=80" alt="Critical thinking illustration" loading="lazy">
+        </div>
+        <div class="post-body">
+          <span class="post-topic">Post 05 · Critical Thinking &amp; Media Literacy</span>
+          <h2 class="post-title">Critical Thinking and Media Literacy</h2>
+          <p class="post-date">May 28, 2026</p>
+          <div class="post-summary">
+            <span class="summary-short">I analyze information, identify biases, and make informed decisions as a responsible digital citizen, connecting this skill to my daily work in IT support.</span>
+            <span class="summary-full">I analyze information, identify biases, and make informed decisions as a responsible digital citizen, connecting this skill to my daily work in IT support. I explain how I check technical sources before trusting them, and how I evaluate information when solving real problems at work, such as verifying error logs instead of assuming a cause. This entry also let me practice vocabulary about analysis, evidence, and reliable sources in English.</span>
+          </div>
+          <div class="post-actions">
+            <button class="btn btn-expand" onclick="togglePost('post-5', this)">Read more ↓</button>
+            <a class="btn btn-drive" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.71 3.5 1.15 15l3.43 5.99h6.56L4.6 8.5zM9.14 21l3.43-5.99H22.85L19.4 21zM14.29 3.5H7.71l6.55 12.5h6.6z"/></svg>
+              View evidence in Drive
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<footer>
+  <span class="eyebrow">My World, My Blog</span>
+  Made with English practice, one post at a time.
+</footer>
+
+<script>
+  function togglePost(id, btn){
+    const post = document.getElementById(id);
+    const expanded = post.classList.toggle('expanded');
+    btn.textContent = expanded ? 'Show less ↑' : 'Read more ↓';
+  }
+</script>
+
+</body>
+</html>
